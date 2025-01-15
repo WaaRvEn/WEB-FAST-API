@@ -1,25 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantilla implantacion</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <style>
-        body{
-            background-color: darkgray;
-        }
-        .oswald{
-            font-family: "Oswald", serif;
-            font-optical-sizing: auto;
-            font-weight: auto;
-            font-style: normal;
-        }
-    </style>
+<!-- Theme Made By www.w3schools.com - No Copyright -->
+<title>Práctica Bootstrap</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="./CSS/index.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    color: #777;
+}
+
+#logo{
+    position: relative;
+    bottom: 10px;
+    border-radius: 20px;
+    width: 50px;
+    height: 40px;
+}
+
+h3, h4 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 10px;      
+    font-size: 20px;
+    color: #111;
+}
+
+.container {
+    padding: 80px 120px;
+  }
+
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+}
+
+.person:hover {
+    border-color: #00000070;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+
+}
+
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+
+.bg-1 h3 {
+color: #fff;
+}
+
+.bg-1 p {
+font-style: italic;
+}
+
+.list-group-item:first-child {
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+border-bottom-right-radius: 0;
+border-bottom-left-radius: 0;
+}
+
+
+.nav-tabs li a {
+    color: #777;
+}
+
+.navbar {
+font-family: Montserrat, sans-serif;
+margin-bottom: 0;
+background-color: #2d2d30;
+border: 0;
+font-size: 11px !important;
+letter-spacing: 4px;
+opacity: 0.9;
+}
+.navbar li a, .navbar .navbar-brand { 
+color: #d5d5d5 !important;
+}
+
+.navbar-nav li a:hover {
+color: #fff !important;
+}
+.navbar-nav li.active a {
+color: #fff !important;
+background-color: #29292c !important;
+}
+
+.navbar-default .navbar-toggle {
+border-color: transparent;
+}
+
+.open .dropdown-toggle {
+color: #fff;
+background-color: #555 !important; 
+}
+
+.dropdown-menu li a {
+color: #000 !important;
+}
+
+.dropdown-menu li a:hover {
+background-color: red !important;
+}
+
+footer {
+background-color: #2d2d30;
+color: #f5f5f5;
+padding: 32px;
+}
+
+footer a {
+color: #f5f5f5;
+}
+
+footer a:hover {
+color: #777;
+text-decoration: none;
+} 
+
+.form-control {
+border-radius: 0;
+}
+
+textarea {
+resize: none;
+}
+
+.portada{
+height: 100px;
+}
+
+.img-circle{
+width: 50%;
+}
+</style>
 </head>
-<body>
-    <h1 class="oswald">Usando plantilla en FastApi en clase de Implantacion</h1>
+<body id="inicio" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+    </button>
+    <a class="navbar-brand" href="#myPage"><img id="logo" src="./IMG/LP LOGO.png" alt="LPLogo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">INICIO</a></li>
+        <li><a href="#grupo">GRUPO</a></li>
+        <li><a href="#discografia">DISCOGRAFÍA</a></li>
+        <li><a href="#premios">PREMIOS</a></li>
+        <li><a href="#mejorescanciones">CANCIONES MÁS POPULARES</a></li>
+        <li><a href="#actualidad">ACTUALIDAD</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="https://www.youtube.com/channel/UCZU9T1ceaOgwfLRq7OKFU4Q" target="_blank">Youtube</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Linkin_Park" target="_blank">Más información</a></li>
+        </ul>
+        </li>
+    </ul>
+    </div>
+</div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+    <div class="item active">
+        <img src="./IMG/LP1.jpg" alt="LP1" width="1200" height="700">
+        <div class="carousel-caption">
+        <h3>Chester Bennington</h3>
+        <p>Cantando en un concierto</p>
+        </div>      
+    </div>
+
+    <div class="item">
+        <img src="./IMG/LP2.png" alt="LP2" width="1200" height="700">
+        <div class="carousel-caption">
+        <h3>Chester Bennington y Mike shinoda</h3>
+        <p>Vocalistas del grupo en un concierto</p>
+        </div>      
+    </div>
+    
+    <div class="item">
+        <img src="./IMG/LP3.jpg" alt="LP3" width="1200" height="700">
+        <div class="carousel-caption">
+        <h3>Linkin Park</h3>
+        <p>Todos los que participan en el grupo</p>
+        </div>      
+    </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (The Band Section) -->
+<div id="grupo" class="container text-center">
+<h3 class="text-center">LINKIN PARK</h3>
+<p>Linkin Park es una banda estadounidense creada en 1996 en Agoura Hills, California. El nombre del grupo hace
+    referencia al parque de Santa Mónica Lincoln Park.
+    El grupo es conocido por su estilo musical que mezcla el rock, rap y sonidos electrónicos. Al inicio se les
+    consideró como nu metal, hasta su segundo álbum Meteora, que lo juntaron con el rap metal, con los siguientes
+    álbumes exploraron nuevas alternativas y se decantaron por un estilo más suave, orientado al rock alternativo
+    Formado por Mike Shinoda, Brad Delson, Rob Bourdon y Chester Bennington, comenzaron de manera independiente 
+    con su primer material llamado Xero, como no tuvo éxito, ningun sello discográfico mostró interes en él.
+    En 1999 llegó su primer contrato gracias a Jeff Blue, el entonces vicepresidente de Warner Records.
+    Desde ese momento la banda se dió a conocer, y en los años siguientes sacaron álbumes hasta que el 20 de julio
+    de 2017, la voz principal del grupo Chester Bennington, falleció a causa de suicidio en California.
+    El grupo tuvo un parón de 3 años por lo dicho anteriormente. Durante estos años los fans preguntaban en las
+    redes sociales a los integrantes sobre el futuro de Linkin Park, entonces estos afirmaban que han estado 
+    trabajando en diferentes proyectos. Entonces en 2020 la banda lanzó remixes de sus canciones de antiguos 
+    álbumes como Hybrid Theory o Meteora.</p>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+    <p class="text-center"><strong>Vocalistas</strong></p><br>
+    <a href="#demo" data-toggle="collapse">
+        <img src="./IMG/ChesterMike.jpg" class="img-circle person" alt="ver" width="255" height="255">
+    </a>
+    <div id="demo" class="collapse">
+        <p>Chester Bennington</p>
+        <p>Mike Shinoda</p>
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <p class="text-center"><strong>Productores</strong></p><br>
+    <a href="#demo2" data-toggle="collapse">
+        <img src="./IMG/Brad Delson.jpg" class="img-circle person" alt="ver" width="255" height="255">
+    </a>
+    <div id="demo2" class="collapse">
+        <p>Rick Rubin</p>
+        <p>Brad Delson</p>
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <p class="text-center"><strong>Instrumentos</strong></p><br>
+    <a href="#demo3" data-toggle="collapse">
+        <img src="./IMG/DaveJoe.jpg" class="img-circle person" alt="ver" width="255" height="255">
+    </a>
+    <div id="demo3" class="collapse">
+        <p>Dave Farrell</p>
+        <p>Joe Hahn</p>
+        <p>Rob Bourdon</p>
+        <p>Brad Delson</p>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- Container (TOUR Section) -->
+<div id="discografia" class="bg-1">
+<div class="container">
+    <h3 class="text-center">DISCOGRAFÍA</h3>
+    
+<table class="table table-hover">
+
+        <tr>
+
+        <th>Linkin Park</th>
+        <th>Hybrid Theory</th>
+        <th>Meteora</th>
+        <th>Minutes to Midnight</th>
+        <th>A Thousand Suns</th>
+        <th>Living Things</th>
+        <th>The Hunting Party</th>
+        <th>One More Light</th>
+        </tr>
+
+        <tr>
+
+        <th>Año</th>
+        <td>2000</td>
+        <td>2003</td>
+        <td>2007</td>
+        <td>2010</td>
+        <td>2012</td>
+        <td>2014</td>
+        <td>2017</td>
+
+        </tr>
+
+        <tr>
+
+        <th>Mejor tema</th>
+        <td>In the End</td>
+        <td>Numb</td>
+        <td>What I've Done</td>
+        <td>The Catalyst</td>
+        <td>Castle of Glass</td>
+        <td>Final Masquerade</td>
+        <td>One More Light</td>
+
+        </tr>
+
+        <tr>
+
+        <th>Productores</th>
+        <td>Don Gilmore</td>
+        <td>Don Gilmore y Linkin Park</td>
+        <td>Rick Rubin y Mike Shinoda</td>
+        <td>Rick Rubin y Mike Shinoda</td>
+        <td>Rick Rubin y Mike Shinod</td>
+        <td>Brad Delson y Mike Shinoda</td>
+        <td>Brad Delson y Mike Shinoda</td>
+        </tr>
+
+        <tr>
+
+        <th>Portada</th>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/61SVySQ88xL.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/71-nhMkC-vL._SX522_.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/412iFdOds7L.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/81Z8E8G1OEL._SL1425_.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/61HhTXFUEFL._SL1437_.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/71cW0dPUcfL._SL1500_.jpg">
+        </td>
+        <td>
+            <img class="portada" src="https://m.media-amazon.com/images/I/71AZAP2lk7L._SL1432_.jpg">
+        </td>
+        </tr>
+
+    </table>
+
+</div>
+
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="premios" class="container">
+<h3 class="text-center">PREMIOS</h3>
+<p class="text-center">
+    El grupo ha estado nominado a 193 premios de los cuales ha ganado 50 de ellos.<br>
+    Los más importantes entre ellos son los premios MTV y los Grammy, que son los más importante dentro de la industria musical. 
+</p>
+<div class="table-responsive">
+
+    <table class="table table-striped">
+
+    <tr>
+
+        <th>Premios Linkin Park</th>
+        <th>MTV Europa</th>
+        <th>Grammy</th>
+
+    </tr>
+
+    <tr>
+
+        <th>Nominaciones</th>
+        <td>17</td>
+        <td>6</td>
+                    
+    </tr>
+
+    <tr>
+
+        <th>Ganados</th>
+        <td>9</td>
+        <td>2</td>
+
+    </tr>
+
+    <tr>
+
+        <th rowspan="8">Categoría ganadas</th>
+        <td>Mejor Artista Hard Rock</td>
+        <td rowspan="4">Mejor Interpretación de Hard Rock</td>
+
+    </tr>
+
+    <tr>
+        <td>Mejor Grupo</td>                   
+    </tr>
+
+    <tr>
+        <td>Mejor Artista Rock</td>
+    </tr>
+
+    <tr>
+        <td>Mejor Grupo</td>
+    </tr>
+
+    <tr>
+
+        <td>Mejor Actuación World Stage</td>
+        <td rowspan="4">Mejor colaboración de rap/cantada</td>
+
+    </tr>
+
+    <tr>
+        <td>Mejor Actuación en Vivo</td>
+    </tr>
+
+    <tr>
+        <td>Mejor artista Rock</td>
+    </tr>
+
+    <tr>
+        <td>Mejor Artista Rock</td>                    
+    </tr>
+
+    </table>
+</div>
+
+</div>
+<div class="bg-1">
+<div id="actualidad" class="container text-center">
+    <h3 class="text-center">ACTUALIDAD (2023)</h3>
+    <p class="text-info">Actualmente lo último que se ha visto de la banda ha sido una ampliación de uno de sus mejores albumes, Meteora. En este se incluyen videos musicales con ayuda de la IA para la formación de imagenes,
+    demos de sus canciones nunca antes visto, conciertos en vivo con mejor calidad de la que había antes. Antes del anuncio del álbum, Linkin Park lanzó un teaser de una nueva canción donde oíamos de nuevo la voz del fallecido 
+    Chester Bennington, dicha canción se llamaría Lost, y significó mucho para los fans de linkin Park ya que tuvieron la oportunidad de escuchar al vocalista principal del grupo otra vez, y lo que significa la canción también 
+    ya que Lost es una canción similar a la reconocidísima canción Numb, no se lanzó en su momento ya que no querian tener dos canciones muy parecidas tanto en contenido de la letra como la instrumental.</p> <br><br><br>
+    <a href="https://www.linkinpark.com/meteora20" target="_blank"><img class="img-circle" src="./IMG/Meteora.jpg" alt="Meteora"></a>
+</div>
+</div>
+
+<div class="container" id="mejorescanciones">
+
+<h3 class="text-center">CANCIONES MÁS POPULARES</h3>  
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Numb</a></li>
+    <li><a data-toggle="tab" href="#menu1">In the end</a></li>
+    <li><a data-toggle="tab" href="#menu2">What I´ve Done</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+    <h2 class="bg-info">LINKIN PARK - NUMB</h2>
+    <p>Es un trabajo que deriva de los géneros nu metal y rock alternativo cuyas letras expresan la presión de estar a la altura de las expectativas de otra persona.</p>
+    <a href="https://youtu.be/kXYiU_JCYtU?si=0p1RfvhwytuWyqy0" target="_blank"><img class="img-thumbnail" src="./IMG/numb.jpg" alt="numb"></a>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+    <h2 class="bg-success">LINKIN PARK - IN THE END</h2>
+    <p>Es una obra derivada de los géneros nu metal, rap rock, rock alternativo y hard rock, con influencias del hip hop y música pop, mientras que su contenido lírico se basa en el fracaso de una persona.</p>
+    <a href="https://youtu.be/eVTXPUF4Oz4?si=sctuAWB8iiG8hK7X" target="_blank"><img class="img-thumbnail" src="./IMG/in the end.jpg" alt="in the end"></a>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+    <h2 class="bg-danger">LINKIN PARK - WHAT I´VE DONE</h2>
+    <p>Es el track principal de la banda sonora oficial de la película de Transformers. Son ellos diciendo adiós a lo que solían ser…</p>
+    <a href="https://youtu.be/8sgycukafqQ?si=PTxC2-4ocrbtvY7C" target="_blank"><img class="img-thumbnail" src="./IMG/what ive done.jpg" alt="what i´ve done"></a>
+    </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+<a class="up-arrow" href="#inicio" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+</a><br><br>
+<p>Página creada para la práctica de BOOTSTRAP, Steven Nata</p> 
+
+</footer>
+
 </body>
 </html>
