@@ -7,45 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-    padding-top: 20px;
-    background-color: #f1f1f1;
-    height: 135%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-    .sidenav {
-        height: auto;
-        padding: 15px;
-    }
-    .row.content {height:auto;} 
-    }
-    .small-icon {
-    font-size: 18px; /* Cambia este valor según tus necesidades */
-    }
-</style>
+<link rel="stylesheet" href="../static/css/Duki.css">
 </head>
 <body>
 
@@ -79,43 +41,54 @@
 <div class="row content">
     <div class="col-sm-2 sidenav">
     <p><a href="#" target="_blank">SUPER SANGRE JOVEN</a></p>
+    <br>
     <p><a href="#" target="_blank"></a>24</p>
+    <br>
     <p><a href="#"></a>DESDE EL FIN DEL MUNDO</p>
-    <p><a href="#"></a>TEMPORADA DE REAGGUETON</p>
+    <br>
+    <p><a href="#"></a>TEMPORADA DE REAGGUETON 1</p>
+    <br>
+    <p><a href="#"></a>TEMPORADA DE REAGGUETON 2</p>
+    <br>
     <p><a href="#"></a>ANTES DE AMERI</p>
+    <br>
     <p><a href="#"></a>AMERI</p>
     </div>
     <div class="col-sm-8 text-left"> 
     <h1>DUKI</h1>
     <p></p>
     <hr>
-    <h3>INFORMACIÓN <span class="glyphicon glyphicon-search small-icon"></span></h3>
-    <p></p>
-    <!--
+    <h3>INFORMACIÓN<span class="glyphicon glyphicon-search small-icon"></span></h3>
     <form action="">
-        <input type="text" name="" id="">
-        <button>Buscar</button>
-    </form>
-    -->
+        <input type="text" class="form-control" placeholder="Buscar">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+        </span>
+        </form>
     </div>
     <div class="col-sm-2 sidenav">
     <div class="well">
-        <img src="" alt="SUPER SANGRE JOVEN">
+        <img class="portada" src="../static/IMG/Super sangre joven.jpg" alt="SUPER SANGRE JOVEN">
     </div>
     <div class="well">
-        <img src="" alt="24">
+        <img class="portada" src="../static/IMG/24.jpg" alt="24">
     </div>
     <div class="well">
-        <img src="" alt="DESDE EL FIN DEL MUNDO">
+        <img class="portada" src="../static/IMG/Desde el fin del mundo.jpg" alt="DESDE EL FIN DEL MUNDO">
     </div>
     <div class="well">
-        <mg src="" alt="TEMPORADA DE REAGGUETON">
+        <img class="portada" src="../static/IMG/Temporada de reggaeton 1.jpg" alt="TEMPORADA DE REGGAETON 1">
     </div>
     <div class="well">
-        <img src="" alt="ANTES DE AMERI">
+        <img class="portada" src="../static/IMG/Temporada de reggaeton 2.jpg" alt="TEMPORADA DE REGGAETON 2">
     </div>
     <div class="well">
-        <img src="" alt="AMERI">
+        <img class="portada" src="../static/IMG/Antes de ameri.jpg" alt="ANTES DE AMERI">
+    </div>
+    <div class="well">
+        <img class="portada" src="../static/IMG/Ameri.jpg" alt="AMERI">
     </div>
     </div>
 </div>

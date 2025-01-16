@@ -11,155 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-    body {
-    font: 400 15px/1.8 Lato, sans-serif;
-    color: #777;
-}
-
-#logo{
-    position: relative;
-    bottom: 10px;
-    border-radius: 20px;
-    width: 50px;
-    height: 40px;
-}
-
-h3, h4 {
-    margin: 10px 0 30px 0;
-    letter-spacing: 10px;      
-    font-size: 20px;
-    color: #111;
-}
-
-.container {
-    padding: 80px 120px;
-  }
-
-.person {
-    border: 10px solid transparent;
-    margin-bottom: 25px;
-    width: 80%;
-    height: 80%;
-}
-
-.person:hover {
-    border-color: #00000070;
-}
-
-.carousel-inner img {
-    width: 100%; /* Set width to 100% */
-    margin: auto;
-}
-
-.carousel-caption h3 {
-    color: #fff !important;
-}
-
-@media (max-width: 600px) {
-    .carousel-caption {
-      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-    }
-
-}
-
-.bg-1 {
-    background: #2d2d30;
-    color: #bdbdbd;
-}
-
-.bg-1 h3 {
-color: #fff;
-}
-
-.bg-1 p {
-font-style: italic;
-}
-
-.list-group-item:first-child {
-border-top-right-radius: 0;
-border-top-left-radius: 0;
-}
-
-.list-group-item:last-child {
-border-bottom-right-radius: 0;
-border-bottom-left-radius: 0;
-}
-
-
-.nav-tabs li a {
-    color: #777;
-}
-
-.navbar {
-font-family: Montserrat, sans-serif;
-margin-bottom: 0;
-background-color: #2d2d30;
-border: 0;
-font-size: 11px !important;
-letter-spacing: 4px;
-opacity: 0.9;
-}
-.navbar li a, .navbar .navbar-brand { 
-color: #d5d5d5 !important;
-}
-
-.navbar-nav li a:hover {
-color: #fff !important;
-}
-.navbar-nav li.active a {
-color: #fff !important;
-background-color: #29292c !important;
-}
-
-.navbar-default .navbar-toggle {
-border-color: transparent;
-}
-
-.open .dropdown-toggle {
-color: #fff;
-background-color: #555 !important; 
-}
-
-.dropdown-menu li a {
-color: #000 !important;
-}
-
-.dropdown-menu li a:hover {
-background-color: red !important;
-}
-
-footer {
-background-color: #2d2d30;
-color: #f5f5f5;
-padding: 32px;
-}
-
-footer a {
-color: #f5f5f5;
-}
-
-footer a:hover {
-color: #777;
-text-decoration: none;
-} 
-
-.form-control {
-border-radius: 0;
-}
-
-textarea {
-resize: none;
-}
-
-.portada{
-height: 100px;
-}
-
-.img-circle{
-width: 50%;
-}
-</style>
+<link rel="stylesheet" href="../static/css/Linkin_Park.css">
 </head>
 <body id="inicio" data-spy="scroll" data-target=".navbar" data-offset="50">
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -170,7 +22,7 @@ width: 50%;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
     </button>
-    <a class="navbar-brand" href="#myPage"><img id="logo" src="./IMG/LP LOGO.png" alt="LPLogo"></a>
+    <a class="navbar-brand" href="#myPage"><img id="logo" src="../static/IMG/LP LOGO.png" alt="LPLogo"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right">
@@ -204,7 +56,7 @@ width: 50%;
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
     <div class="item active">
-        <img src="./IMG/LP1.jpg" alt="LP1" width="1200" height="700">
+        <img src="../static/IMG/LP1.jpg" alt="LP1" width="1200" height="700">
         <div class="carousel-caption">
         <h3>Chester Bennington</h3>
         <p>Cantando en un concierto</p>
@@ -212,7 +64,7 @@ width: 50%;
     </div>
 
     <div class="item">
-        <img src="./IMG/LP2.png" alt="LP2" width="1200" height="700">
+        <img src="../static/IMG/LP2.png" alt="LP2" width="1200" height="700">
         <div class="carousel-caption">
         <h3>Chester Bennington y Mike shinoda</h3>
         <p>Vocalistas del grupo en un concierto</p>
@@ -220,7 +72,7 @@ width: 50%;
     </div>
     
     <div class="item">
-        <img src="./IMG/LP3.jpg" alt="LP3" width="1200" height="700">
+        <img src="../static/IMG/LP3.jpg" alt="LP3" width="1200" height="700">
         <div class="carousel-caption">
         <h3>Linkin Park</h3>
         <p>Todos los que participan en el grupo</p>
@@ -261,7 +113,7 @@ width: 50%;
     <div class="col-sm-4">
     <p class="text-center"><strong>Vocalistas</strong></p><br>
     <a href="#demo" data-toggle="collapse">
-        <img src="./IMG/ChesterMike.jpg" class="img-circle person" alt="ver" width="255" height="255">
+        <img src="../static/IMG/ChesterMike.jpg" class="img-circle person" alt="ver" width="255" height="255">
     </a>
     <div id="demo" class="collapse">
         <p>Chester Bennington</p>
@@ -271,7 +123,7 @@ width: 50%;
     <div class="col-sm-4">
     <p class="text-center"><strong>Productores</strong></p><br>
     <a href="#demo2" data-toggle="collapse">
-        <img src="./IMG/Brad Delson.jpg" class="img-circle person" alt="ver" width="255" height="255">
+        <img src="../static/IMG/Brad Delson.jpg" class="img-circle person" alt="ver" width="255" height="255">
     </a>
     <div id="demo2" class="collapse">
         <p>Rick Rubin</p>
@@ -281,7 +133,7 @@ width: 50%;
     <div class="col-sm-4">
     <p class="text-center"><strong>Instrumentos</strong></p><br>
     <a href="#demo3" data-toggle="collapse">
-        <img src="./IMG/DaveJoe.jpg" class="img-circle person" alt="ver" width="255" height="255">
+        <img src="../static/IMG/DaveJoe.jpg" class="img-circle person" alt="ver" width="255" height="255">
     </a>
     <div id="demo3" class="collapse">
         <p>Dave Farrell</p>
@@ -467,7 +319,7 @@ width: 50%;
     demos de sus canciones nunca antes visto, conciertos en vivo con mejor calidad de la que había antes. Antes del anuncio del álbum, Linkin Park lanzó un teaser de una nueva canción donde oíamos de nuevo la voz del fallecido 
     Chester Bennington, dicha canción se llamaría Lost, y significó mucho para los fans de linkin Park ya que tuvieron la oportunidad de escuchar al vocalista principal del grupo otra vez, y lo que significa la canción también 
     ya que Lost es una canción similar a la reconocidísima canción Numb, no se lanzó en su momento ya que no querian tener dos canciones muy parecidas tanto en contenido de la letra como la instrumental.</p> <br><br><br>
-    <a href="https://www.linkinpark.com/meteora20" target="_blank"><img class="img-circle" src="./IMG/Meteora.jpg" alt="Meteora"></a>
+    <a href="https://www.linkinpark.com/meteora20" target="_blank"><img class="img-circle" src="../static/IMG/Meteora.jpg" alt="Meteora"></a>
 </div>
 </div>
 
@@ -484,17 +336,17 @@ width: 50%;
     <div id="home" class="tab-pane fade in active">
     <h2 class="bg-info">LINKIN PARK - NUMB</h2>
     <p>Es un trabajo que deriva de los géneros nu metal y rock alternativo cuyas letras expresan la presión de estar a la altura de las expectativas de otra persona.</p>
-    <a href="https://youtu.be/kXYiU_JCYtU?si=0p1RfvhwytuWyqy0" target="_blank"><img class="img-thumbnail" src="./IMG/numb.jpg" alt="numb"></a>
+    <a href="https://youtu.be/kXYiU_JCYtU?si=0p1RfvhwytuWyqy0" target="_blank"><img class="img-thumbnail" src="../static/IMG/numb.jpg" alt="numb"></a>
     </div>
     <div id="menu1" class="tab-pane fade">
     <h2 class="bg-success">LINKIN PARK - IN THE END</h2>
     <p>Es una obra derivada de los géneros nu metal, rap rock, rock alternativo y hard rock, con influencias del hip hop y música pop, mientras que su contenido lírico se basa en el fracaso de una persona.</p>
-    <a href="https://youtu.be/eVTXPUF4Oz4?si=sctuAWB8iiG8hK7X" target="_blank"><img class="img-thumbnail" src="./IMG/in the end.jpg" alt="in the end"></a>
+    <a href="https://youtu.be/eVTXPUF4Oz4?si=sctuAWB8iiG8hK7X" target="_blank"><img class="img-thumbnail" src="../static/IMG/in the end.jpg" alt="in the end"></a>
     </div>
     <div id="menu2" class="tab-pane fade">
     <h2 class="bg-danger">LINKIN PARK - WHAT I´VE DONE</h2>
     <p>Es el track principal de la banda sonora oficial de la película de Transformers. Son ellos diciendo adiós a lo que solían ser…</p>
-    <a href="https://youtu.be/8sgycukafqQ?si=PTxC2-4ocrbtvY7C" target="_blank"><img class="img-thumbnail" src="./IMG/what ive done.jpg" alt="what i´ve done"></a>
+    <a href="https://youtu.be/8sgycukafqQ?si=PTxC2-4ocrbtvY7C" target="_blank"><img class="img-thumbnail" src="../static/IMG/what ive done.jpg" alt="what i´ve done"></a>
     </div>
 </div>
 </div>
