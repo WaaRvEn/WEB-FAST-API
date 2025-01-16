@@ -10,11 +10,35 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get("/")
 def read_root(request: Request):
     return templates.TemplateResponse(
-        request= request, name="steven.html"
+        request= request, name="index.html"
     )
 
-@app.get("/plantilla")
+@app.get("/Linkin Park")
 def plantilla(request: Request):
     return templates.TemplateResponse(
-        request= request, name="index.html"
+        request= request, name="Linkin_Park.html"
+    )
+
+@app.get("/Duki")
+def plantilla(request: Request):
+    return templates.TemplateResponse(
+        request= request, name="Duki.html"
+    )
+
+@app.get("/Quevedo")
+def plantilla(request: Request):
+    return templates.TemplateResponse(
+        request= request, name="Quevedo.html"
+    )
+
+@app.get("/Milo J")
+def plantilla(request: Request):
+    return templates.TemplateResponse(
+        request= request, name="Milo_J.html"
+    )
+
+@app.get("/Ramma")
+def plantilla(request: Request):
+    return templates.TemplateResponse(
+        request= request, name="Ramma.html"
     )
