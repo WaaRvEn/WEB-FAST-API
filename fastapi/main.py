@@ -1,4 +1,14 @@
-from fastapi import FastAPI, Request
+from data.database import database
+from typing import Annotated
+
+from data.dao.dao_artisatas import DaoArtistas
+
+from data.modelo.menu import Menu
+
+from typing import Union
+
+
+from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
@@ -42,3 +52,56 @@ def plantilla(request: Request):
     return templates.TemplateResponse(
         request= request, name="Ramma.html"
     )
+
+@app.get("/database")
+def database(request: Request, nombre : str = "pepe", otro : int = 1):
+    menu = Menu(True, True)
+
+    artistas = DaoArtistas().get_all(database)
+
+    return templates.TemplateResponse(
+        request=request, name="database.html", context={menu : "menu", artistas : "artistas", nombre : "nombre"}
+    )
+
+##############################################################
+
+@app.get("/deleteartistas/{artista_id}")
+def delete_alumnos(request: Request,artista_id:str):
+    dao = DaoArtistas()
+    dao.delete(database, artista_id)
+    
+    artistas =  dao.get_all(database)
+    return templates.TemplateResponse(
+    request=request, name="database.html", context={"artistas": artistas}                                                      
+)
+
+@app.post("/delartistas")
+def del_artistas(request: Request,artista_id:Annotated[str, Form()] ):
+    print("hlhl")
+    dao = DaoArtistas()
+    dao.delete(database, artista_id)
+    
+    alumnos =  dao.get_all(database)
+    return templates.TemplateResponse(
+    request=request, name="database.html", context={"artistas": alumnos} )
+
+@app.get("/formaddartistas")
+def form_add_artistas(request: Request):
+    return templates.TemplateResponse(
+    request=request, name="formaddAlumnos.html"
+    )
+
+@app.post("/addartistas")
+def add_artistas(request: Request, nombre: Annotated[str, Form()] = None):
+    if nombre is None:
+        return templates.TemplateResponse(
+        request=request, name="database.html", context={"nombre": "pepe"}
+        )
+    
+    dao = DaoArtistas()
+    dao.insert(database, nombre)
+    
+    artistas =  dao.get_all(database)
+    return templates.TemplateResponse(
+    request=request, name="formaddAlumnos.html", context={"artistas": artistas}
+)
