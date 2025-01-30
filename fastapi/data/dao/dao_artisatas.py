@@ -20,13 +20,15 @@ class DaoArtistas:
         sql = ("INSERT INTO artistas (nombre) values (%s)")
         data = (nombre,)
         cursor.execute(sql, data)
+        # cursor.execute(f"INSERT INTO artistas (nombre) VALUES ('{nombre}')")
         db.commit()
         cursor.close()
 
-    def delete(self, db, id : int):
+    def delete(self, db, id : str):
         cursor = db.cursor()
         sql = ("DELETE FROM artistas where id = (%s)")
         data = (id,)
         cursor.execute(sql,data)
+        # cursor.execute(f"INSERT INTO artistas (nombre) VALUES ('{nombre}')")
         db.commit()
         cursor.close()

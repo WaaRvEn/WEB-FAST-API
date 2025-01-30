@@ -7,20 +7,25 @@ from data.modelo.menu import Menu
 
 from typing import Union
 
+from fastapi import FastAPI, Request,Form
 
-from fastapi import FastAPI, Request, Form
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
+
+
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="./static"), name="static")
+
+
 templates = Jinja2Templates(directory="templates")
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def read_root(request: Request):
     return templates.TemplateResponse(
-        request= request, name="index.html"
+        request= request, name="index_steven.html"
     )
 
 @app.get("/Linkin Park")
@@ -54,19 +59,17 @@ def plantilla(request: Request):
     )
 
 @app.get("/database")
-def database(request: Request, nombre : str = "pepe", otro : int = 1):
+def get_artistas(request: Request, nombre : str = "pepe", otro : int = 1):
     menu = Menu(True, True)
 
     artistas = DaoArtistas().get_all(database)
 
     return templates.TemplateResponse(
-        request=request, name="database.html", context={menu : "menu", artistas : "artistas", nombre : "nombre"}
+        request=request, name="database.html", context={"menu": menu,"artistas": artistas,"nombre": nombre}
     )
 
-##############################################################
-
 @app.get("/deleteartistas/{artista_id}")
-def delete_alumnos(request: Request,artista_id:str):
+def delete_aritstas(request: Request,artista_id:str):
     dao = DaoArtistas()
     dao.delete(database, artista_id)
     
