@@ -14,7 +14,7 @@ class DaoArtistas:
         cursor.close()
 
         return equipos
-    
+
     def insert(self, db, nombre : str):
         cursor = db.cursor()
         sql = ("INSERT INTO artistas (nombre) values (%s)")

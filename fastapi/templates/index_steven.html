@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>MÚSICA</title>
+<title>DB MÚSICA</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,12 +17,25 @@
     <h4>IMPLANTACION DE APLICACIONES WEB - FASTAPI</h4>
     <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#section1">INICIO</a></li>
-        <li><a href="/Linkin Park">Linkin Park</a></li>
+        {% if menu %}
+            <li class="active">
+                {% if menu.home %}
+                    <a href="{{ url_for('get_artistas') }}">VER ARTISTAS</a>
+                {% endif %}
+            </li>
+            <li class="active">   
+                {% if menu.add %}
+                    <a href="{{ url_for('form_add_artistas') }}">AÑADIR ARTISTAS</a>
+                {% endif %}
+            </li>
+        {% endif %}
+    <!--<li><a href="/Linkin Park">Linkin Park</a></li>
         <li><a href="/Duki">Duki</a></li>
         <li><a href="/Quevedo">Quevedo</a></li>
         <li><a href="/Milo J">Milo J</a></li>
-        <li><a href="/Ramma">Ramma</a></li>
+        <li><a href="/Ramma">Ramma</a></li> -->
     </ul><br>
+    <h4>Buscar Artista</h4>
     <div class="input-group">
         <form action="">
         <input type="text" class="form-control" placeholder="Buscar">
@@ -50,6 +63,30 @@
     <h5><span class="label label-success">Nuevo</span></h5><br>
     <p>Nuevo grupo musical</p>
     <hr>
+    <h1>ARTISTAS</h1>
+    <h4>
+    {% if artistas %}
+        {% for artista in artistas %}
+            {{artista.nombre}}<br><br>
+        {% endfor %}
+    {% else %}
+    </h4>
+        <h1>No hay artistas</h1>
+    {% endif %}
+    <h1>Añadir Artista</h1>
+    <form action="{{ url_for('add_artistas') }}" method="post">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="submit" value="Enviar">
+    </form>
+    <br>
+    <form action="{{ url_for('del_artistas') }}" method="post">
+        <select  name="artista_id">
+                {% for artista in artistas %}
+                    <option value="{{artista.id}}">{{artista.nombre}}</option>
+                {% endfor%}
+        </select>
+        <input type="submit" value="Borrar">
+    </form>
     <!-- <h4>Leave a Comment:</h4>
     <form role="form">
         <div class="form-group">
@@ -85,13 +122,12 @@
             <div class="col-xs-10">
             <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
             <p>Me too! WOW!</p>
-            -->
             <br>
             </div>
         </div>
         </div>
     </div>
-    </div>
+    </div>-->
 </div>
 </div>
 

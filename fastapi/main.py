@@ -24,8 +24,13 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 def read_root(request: Request):
+
+    menu = Menu(True, True)
+
+    artistas = DaoArtistas().get_all(database)
+
     return templates.TemplateResponse(
-        request= request, name="index_steven.html"
+        request= request, name="index_steven.html", context={"menu": menu,"artistas": artistas}
     )
 
 @app.get("/Linkin Park")
@@ -58,8 +63,12 @@ def plantilla(request: Request):
         request= request, name="Ramma.html"
     )
 
+
+######################################################## DATA BASE ##############################################################
+
+
 @app.get("/database")
-def get_artistas(request: Request, nombre : str = "pepe", otro : int = 1):
+def get_artistas(request: Request, nombre : str = "Steven"):
     menu = Menu(True, True)
 
     artistas = DaoArtistas().get_all(database)
@@ -75,30 +84,28 @@ def delete_aritstas(request: Request,artista_id:str):
     
     artistas =  dao.get_all(database)
     return templates.TemplateResponse(
-    request=request, name="database.html", context={"artistas": artistas}                                                      
+    request=request, name="index_steven.html", context={"artistas": artistas}                                                      
 )
 
 @app.post("/delartistas")
 def del_artistas(request: Request,artista_id:Annotated[str, Form()] ):
-    print("hlhl")
     dao = DaoArtistas()
     dao.delete(database, artista_id)
-    
     alumnos =  dao.get_all(database)
     return templates.TemplateResponse(
-    request=request, name="database.html", context={"artistas": alumnos} )
+    request=request, name="index_steven.html", context={"artistas": alumnos} )
 
 @app.get("/formaddartistas")
 def form_add_artistas(request: Request):
     return templates.TemplateResponse(
-    request=request, name="formaddAlumnos.html"
+    request=request, name="formaddartistas.html"
     )
 
 @app.post("/addartistas")
 def add_artistas(request: Request, nombre: Annotated[str, Form()] = None):
     if nombre is None:
         return templates.TemplateResponse(
-        request=request, name="database.html", context={"nombre": "pepe"}
+        request=request, name="index_steven.html", context={"nombre": "Steven"}
         )
     
     dao = DaoArtistas()
