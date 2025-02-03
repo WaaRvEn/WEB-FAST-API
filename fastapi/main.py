@@ -69,49 +69,81 @@ def plantilla(request: Request):
 
 @app.get("/database")
 def get_artistas(request: Request, nombre : str = "Steven"):
+
     menu = Menu(True, True)
 
     artistas = DaoArtistas().get_all(database)
 
     return templates.TemplateResponse(
-        request=request, name="database.html", context={"menu": menu,"artistas": artistas,"nombre": nombre}
+        request=request, name="database.html", context={"menu": menu,"artistas": artistas}
     )
-
-@app.get("/deleteartistas/{artista_id}")
-def delete_aritstas(request: Request,artista_id:str):
-    dao = DaoArtistas()
-    dao.delete(database, artista_id)
-    
-    artistas =  dao.get_all(database)
-    return templates.TemplateResponse(
-    request=request, name="index_steven.html", context={"artistas": artistas}                                                      
-)
-
-@app.post("/delartistas")
-def del_artistas(request: Request,artista_id:Annotated[str, Form()] ):
-    dao = DaoArtistas()
-    dao.delete(database, artista_id)
-    alumnos =  dao.get_all(database)
-    return templates.TemplateResponse(
-    request=request, name="index_steven.html", context={"artistas": alumnos} )
 
 @app.get("/formaddartistas")
 def form_add_artistas(request: Request):
+    menu = Menu(True, True)
+
+    artistas = DaoArtistas().get_all(database)
+
     return templates.TemplateResponse(
-    request=request, name="formaddartistas.html"
+        request=request, name="formaddartistas.html", context={"menu": menu,"artistas": artistas}
     )
 
 @app.post("/addartistas")
 def add_artistas(request: Request, nombre: Annotated[str, Form()] = None):
     if nombre is None:
         return templates.TemplateResponse(
-        request=request, name="index_steven.html", context={"nombre": "Steven"}
+        request=request, name="formaddartistas.html", context={"artistas": artistas}
         )
     
     dao = DaoArtistas()
     dao.insert(database, nombre)
     
     artistas =  dao.get_all(database)
+    menu = Menu(True, True)
     return templates.TemplateResponse(
-    request=request, name="formaddAlumnos.html", context={"artistas": artistas}
+    request=request, name="database.html", context={"menu" : menu, "artistas": artistas}
 )
+    
+@app.get("/delartista")
+def form_delete_artistas(request: Request):
+    menu = Menu(True, True)
+    dao = DaoArtistas()
+    
+    artistas =  dao.get_all(database)
+    return templates.TemplateResponse(
+        request=request, name="formdelartistas.html", context={"menu" : menu, "artistas" :artistas}
+    )
+
+@app.post("/delartistas")
+def del_artistas(request: Request,artista_id:Annotated[str, Form()] ):
+    dao = DaoArtistas()
+    dao.delete(database, artista_id)
+    artistas =  dao.get_all(database)
+    menu = Menu(True, True)
+    return templates.TemplateResponse(
+    request=request, name="database.html", context={"menu" : menu, "artistas": artistas} )
+
+@app.get("/formupdateartista")
+def form_update_artista(request: Request):
+    menu = Menu(True, True)
+    dao = DaoArtistas()
+    artistas = dao.get_all(database)
+    
+    return templates.TemplateResponse(
+        request=request,
+        name="formupdateartista.html",
+        context={"menu": menu, "artistas": artistas}
+    )
+
+@app.post("/updateartista")
+def update_artista(request: Request, artista_id: Annotated[str, Form()], nuevo_nombre: Annotated[str, Form()]):
+    menu = Menu(True, True)
+    dao = DaoArtistas()
+
+    artistas = dao.get_all(database)
+    
+    return templates.TemplateResponse(
+        request=request,
+        name="database.html",
+        context={"menu": menu, "artistas": artistas}
+    )

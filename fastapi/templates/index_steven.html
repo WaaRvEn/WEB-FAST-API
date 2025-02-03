@@ -16,7 +16,6 @@
     <div class="col-sm-3 sidenav">
     <h4>IMPLANTACION DE APLICACIONES WEB - FASTAPI</h4>
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">INICIO</a></li>
         {% if menu %}
             <li class="active">
                 {% if menu.home %}
@@ -28,14 +27,29 @@
                     <a href="{{ url_for('form_add_artistas') }}">AÑADIR ARTISTAS</a>
                 {% endif %}
             </li>
+            <li class="active">   
+                {% if menu.add %}
+                    <a href="{{ url_for('form_delete_artistas') }}">ELIMINAR ARTISTAS</a>
+                {% endif %}
+            </li>
+            <li class="active">   
+                {% if menu.add %}
+                    <a href="{{ url_for('form_update_artista') }}">ACTUALIZAR ARTISTAS</a>
+                {% endif %}
+            </li>
+<!--        <li class="active">   
+                {% if menu.add %}
+                    <a href="{{ url_for('del_artistas') }}">ELIMINAR ARTISTAS</a>
+                {% endif %}
+            </li> -->
         {% endif %}
     <!--<li><a href="/Linkin Park">Linkin Park</a></li>
         <li><a href="/Duki">Duki</a></li>
         <li><a href="/Quevedo">Quevedo</a></li>
         <li><a href="/Milo J">Milo J</a></li>
-        <li><a href="/Ramma">Ramma</a></li> -->
-    </ul><br>
-    <h4>Buscar Artista</h4>
+        <li><a href="/Ramma">Ramma</a></li>
+    </ul><br> -->
+<!--    <h4>Buscar Artista</h4>
     <div class="input-group">
         <form action="">
         <input type="text" class="form-control" placeholder="Buscar">
@@ -45,7 +59,7 @@
         </button>
         </span>
         </form>
-    </div>
+    </div> -->
     </div>
 
     <div class="col-sm-9">
@@ -63,30 +77,6 @@
     <h5><span class="label label-success">Nuevo</span></h5><br>
     <p>Nuevo grupo musical</p>
     <hr>
-    <h1>ARTISTAS</h1>
-    <h4>
-    {% if artistas %}
-        {% for artista in artistas %}
-            {{artista.nombre}}<br><br>
-        {% endfor %}
-    {% else %}
-    </h4>
-        <h1>No hay artistas</h1>
-    {% endif %}
-    <h1>Añadir Artista</h1>
-    <form action="{{ url_for('add_artistas') }}" method="post">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="submit" value="Enviar">
-    </form>
-    <br>
-    <form action="{{ url_for('del_artistas') }}" method="post">
-        <select  name="artista_id">
-                {% for artista in artistas %}
-                    <option value="{{artista.id}}">{{artista.nombre}}</option>
-                {% endfor%}
-        </select>
-        <input type="submit" value="Borrar">
-    </form>
     <!-- <h4>Leave a Comment:</h4>
     <form role="form">
         <div class="form-group">

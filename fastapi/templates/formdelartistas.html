@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>AÑADIR ARTISTAS</title>
+<title>ELIMINAR ARTISTAS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
             </li>
             <li class="active">   
                 {% if menu.add %}
-                    <a href="{{ url_for('form_delete_artistas') }}">ELIMINAR ARTISTAS</a>
+                    <a href="{{ url_for('form_add_artistas') }}">AÑADIR ARTISTAS</a>
                 {% endif %}
             </li>
             <li class="active">   
@@ -40,10 +40,14 @@
     <div class="col-sm-9">
     <h3><small>MÚSICA</small></h3>
     <hr>
-    <h1>Añadir Artista</h1> <br>
-    <form action="{{ url_for('add_artistas') }}" method="post">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="submit" value="Añadir">
+    <h1>ELIMINAR ARTISTAS</h1> <br>
+    <form action="{{ url_for('del_artistas') }}" method="post">
+        <select  name="artista_id">
+            {% for artista in artistas %}  
+                <option value="{{artista.id}}">{{artista.nombre}}</option>
+            {% endfor%}
+        </select>
+        <input type="submit" value="Eliminar">
     </form>
     <!-- <h4>Leave a Comment:</h4>
     <form role="form">

@@ -32,3 +32,11 @@ class DaoArtistas:
         # cursor.execute(f"INSERT INTO artistas (nombre) VALUES ('{nombre}')")
         db.commit()
         cursor.close()
+
+    def update(self, db, artista_id: str, nuevo_nombre: str):
+        cursor = db.cursor()
+        sql = ("UPDATE artistas SET nombre = %s WHERE id = %s")
+        data = (nuevo_nombre, artista_id)
+        cursor.execute(sql, data)
+        db.commit()
+        cursor.close()
