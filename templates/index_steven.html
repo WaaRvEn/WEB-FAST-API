@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../static/css/index.css">
+<link rel="stylesheet" href="{{ url_for('static',path="css/index.css") }}">
 </head>
 <body>
 
@@ -37,10 +37,7 @@
                     <a href="{{ url_for('form_update_artista') }}">ACTUALIZAR ARTISTAS</a>
                 {% endif %}
             </li>
-<!--        <li class="active">   
-                {% if menu.add %}
-                    <a href="{{ url_for('del_artistas') }}">ELIMINAR ARTISTAS</a>
-                {% endif %}
+        </ul>
             </li> -->
         {% endif %}
     <!--<li><a href="/Linkin Park">Linkin Park</a></li>
@@ -118,8 +115,8 @@
             </div>
         </div>
         </div>
-    </div>
     </div>-->
+    </div>
 </div>
 </div>
 

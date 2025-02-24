@@ -1,3 +1,4 @@
+from httpx import request
 from data.database import database
 from typing import Annotated
 
@@ -21,6 +22,22 @@ app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 
 templates = Jinja2Templates(directory="templates")
+
+@app.get("/test")
+def test(request: Request):
+    menu = Menu(True, True)
+    return templates.TemplateResponse(request= request, name="test.html", context={"menu": menu})
+
+@app.get("/")
+def read_root(request: Request):
+
+    menu = Menu(True, True)
+
+    artistas = DaoArtistas().get_all(database)
+
+    return templates.TemplateResponse(
+        request= request, name="index.html", context={"menu": menu,"artistas": artistas}
+    )
 
 @app.get("/")
 def read_root(request: Request):
