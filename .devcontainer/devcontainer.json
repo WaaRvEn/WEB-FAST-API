@@ -1,0 +1,16 @@
+{
+    "name": "FastAPI Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "../Dockerfile"
+    },
+    "forwardPorts": [80],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    }
+}

@@ -1,4 +1,4 @@
-name: Server CI workflow
+name: DevSecOps CI/CD Pipeline
 
 on:
   push:
@@ -7,53 +7,59 @@ env:
   VERSION: 4.0
 
 jobs:
-  # unit-tests:
-  #   runs-on: self-hosted
-  #   defaults:
-  #     run:
-  #       working-directory: ./server
-  #   strategy:
-  #     matrix:
-  #       node-version: [16.x]
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: ${{ matrix.node-version }}
-  #       cache: 'npm'
-  #       cache-dependency-path: server/package-lock.json
-  #   - run: npm ci
-  #   - run: npm run unit
-  deploy:
-    # needs: unit-tests 
+  # =========================================================
+  # FASE 1: INTEGRACIÓN DE ESCÁNERES (Punto 4 de tu lista)
+  # =========================================================
+  security-scan:
+    name: Escaneo de Seguridad (SAST/SCA)
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout 
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
+      - name: Checkout del código
+        uses: actions/checkout@v4
+      
+      # Escaneamos el código fuente y las dependencias (requirements.txt)
+      # Buscando vulnerabilidades críticas antes de construir nada.
+      - name: Escáner Trivy (Filesystem)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'table'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1' # El pipeline SE CANCELA si encuentra algo grave
+
+  # =========================================================
+  # FASE 2: BUILD & DEPLOY (Puntos 2 y 3 de tu lista)
+  # =========================================================
+  deploy:
+    name: Build y Push a Docker Hub
+    needs: security-scan # VITAL: Solo se ejecuta si el escaneo de seguridad fue exitoso
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        id: buildx # Añadido: Sin esto, tu código fallaba más abajo
         uses: docker/setup-buildx-action@v3
-      - 
-        name: Login to private registry
+        
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      -
-        name: Build and push
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          #tags: ${{ steps.meta.outputs.tags }} 
           builder: ${{ steps.buildx.outputs.name }}
           push: true
+          # AÑADIDO: El tag del github.sha es tu "Procedimiento de Rollback"
           tags: | 
             ${{ secrets.REGISTRY_USERNAME }}/webfastapi:latest
             ${{ secrets.REGISTRY_USERNAME }}/webfastapi:${{ env.VERSION }}
-            
+            ${{ secrets.REGISTRY_USERNAME }}/webfastapi:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
